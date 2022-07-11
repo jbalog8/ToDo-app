@@ -3,32 +3,28 @@ import { useState } from "react";
 import { Item } from "./models/Item";
 
 function App() {
-
   const [items, setItems] = useState([]);
 
   const addItem = (itemFormData) => {
     const item = new Item(itemFormData.item);
-    setItems((state) => [...state, item]);
+    setItems((state) => [ ...state, item ]);
   }
 
   const itemElements = items.map((item) => (
     <div key={item.id}>
       <input type="checkbox" name="" id="" />
-      <span>{item.text}({item.displayCreatedAt()})</span>
-      
+      <span>{item.text} ({item.displayCreatedAt()})</span>
       <button type="button">Delete</button>
     </div>
   ));
 
-  
-
   return (
     <div>
       <div>
-        <ItemForm onSubmit= {addItem} />
+        <ItemForm onSubmit={addItem} />
       </div>
       <div>
-       {itemElements}
+        {itemElements}
       </div>
     </div>
   );
