@@ -5,14 +5,11 @@ export function ItemList() {
   const context = useContext(ItemsContext);
   const [queryState, setQueryState] = useState({});
 
- 
-
   const updateQuery = (event) => {
     let value = null;
 
     if (event.target.value === "true") {
       value = true;
-      
     } else if (event.target.value === "false") {
       value = false;
     }
@@ -37,22 +34,25 @@ export function ItemList() {
       </button>
     </div>
   ));
-  
+
+  const totalItemsCount = context.items.length;
+  const completedItemsCount = context.getItems({ completed: true }).length;
+  const openItemsCount = totalItemsCount - completedItemsCount;
+
   return (
     <div>
       <div>
         <button onClick={updateQuery} name="completed" value="">
-          All items {queryState.completed === null && '(Active)'}
+          All items ({totalItemsCount}) {queryState.completed === null && '(Active)'}
         </button>
         <button onClick={updateQuery} name="completed" value="true">
-          Completed items {queryState.completed === true && '(Active)'}
+          Completed items ({completedItemsCount}) {queryState.completed === true && '(Active)'}
         </button>
         <button onClick={updateQuery} name="completed" value="false">
-          Open items {queryState.completed === false && '(Active)'}
+          Open items ({openItemsCount}) {queryState.completed === false && '(Active)'}
         </button>
       </div>
       <div>
-        
         {itemElements}
       </div>
     </div>
