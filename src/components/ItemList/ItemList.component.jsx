@@ -5,11 +5,14 @@ export function ItemList() {
   const context = useContext(ItemsContext);
   const [queryState, setQueryState] = useState({});
 
+ 
+
   const updateQuery = (event) => {
     let value = null;
 
     if (event.target.value === "true") {
       value = true;
+      
     } else if (event.target.value === "false") {
       value = false;
     }
@@ -35,6 +38,11 @@ export function ItemList() {
     </div>
   ));
 
+  
+  
+ 
+  
+
   return (
     <div>
       <div>
@@ -42,13 +50,14 @@ export function ItemList() {
           All items
         </button>
         <button onClick={updateQuery} name="completed" value="true">
-          Completed items
+          Completed items ()
         </button>
         <button onClick={updateQuery} name="completed" value="false">
           Open items
         </button>
       </div>
       <div>
+        
         {itemElements}
       </div>
     </div>
