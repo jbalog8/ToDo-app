@@ -37,23 +37,18 @@ export function ItemList() {
       </button>
     </div>
   ));
-
   
-  
- 
-  
-
   return (
     <div>
       <div>
         <button onClick={updateQuery} name="completed" value="">
-          All items
+          All items {queryState.completed === null && '(Active)'}
         </button>
         <button onClick={updateQuery} name="completed" value="true">
-          Completed items ()
+          Completed items {queryState.completed === true && '(Active)'}
         </button>
         <button onClick={updateQuery} name="completed" value="false">
-          Open items
+          Open items {queryState.completed === false && '(Active)'}
         </button>
       </div>
       <div>
