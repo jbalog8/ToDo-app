@@ -26,5 +26,12 @@ export class Item {
         }
     }
 
-    
+    static fromObject(dataObject) {
+        const item = new Item(dataObject.text);
+        item.completedAt = dataObject.completedAt;
+        item.createdAt = dataObject.createdAt;
+        item.id = dataObject.id;
+
+        return item;
+    }
 }
